@@ -15,7 +15,7 @@ namespace Гараж
             this.garageName = garageName;
         }
 
-        public int GetPrice(Random random)//доработать рандом
+        public int GetPrice(Random random)
         {
             int servicePrice = random.Next(100, 500);
             _servicePrice = servicePrice;

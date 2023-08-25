@@ -37,7 +37,7 @@ namespace Гараж
 
                 Console.WriteLine($"\nЦены за выбранный сервис от всех гаражей:");
 
-                PrintAllGaragePriceList(listToPay);
+                admin1.GetBestChoice(listToPay);
   
                 Console.WriteLine("\nХотите перейти к оплате?");
 
@@ -46,12 +46,12 @@ namespace Гараж
 
                 Console.WriteLine("\nВыберите желаемый гараж для оплаты:");
 
-                int moneyPaid = Pay(PaymentArray(listToPay));
+                int moneyPaid = Pay(GetPaymentArray(listToPay));
 
                 Console.Write("\n** " + new string('-', 33) + " ** ");
 
 
-                Console.WriteLine($"\nБалланс админа: {admin1.GetMyFieldBalance()} ");
+                Console.WriteLine($"\n\nБалланс админа: {admin1.GetMyFieldBalance()} ");
 
                 Console.WriteLine($"\nБалланс админа после оплаты:{admin1.GetMoneyBalance(moneyPaid)}");  
 
@@ -151,7 +151,7 @@ namespace Гараж
                 case 1:
 
                     Console.Clear();
-                    PrintPaymentArray(PaymentArray(listToPay)); 
+                    PrintPaymentArray(GetPaymentArray(listToPay)); 
 
                     break ; 
                 
@@ -177,7 +177,7 @@ namespace Гараж
 
         }
 
-        public  int[] PaymentArray(Dictionary<Garage, int> garages)
+        public  int[] GetPaymentArray(Dictionary<Garage, int> garages)
         {
             int[] paymentArray = new int[garages.Count];
             int i = 0;
@@ -211,13 +211,13 @@ namespace Гараж
 
                 if (index > 0 && index <= array.Length)
                 {
-                    Console.WriteLine($"Вы выбрали:{array[index - 1]}");
+                    Console.WriteLine($"\nВы выбрали:{array[index - 1]}");
                     nonRightInput = false;
                     moneyToPay = array[index - 1];
                 }
                 else
                 {
-                    Console.WriteLine("Сделайте правильный ввод");
+                    Console.WriteLine("\nСделайте правильный ввод");
                 }
             }
             return moneyToPay;

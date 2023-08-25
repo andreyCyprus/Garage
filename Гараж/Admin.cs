@@ -29,5 +29,20 @@ namespace Гараж
             _moneyBalance = moneyBalance + money * commission / 100;
             return _moneyBalance; 
         }
-    } 
+
+        public void GetBestChoice(Dictionary<Garage, int> priceList)
+        {
+            foreach (var pair in priceList)
+            {
+                Console.WriteLine("{0}: {1}", pair.Key.garageName, pair.Value);
+            }
+            var minKeyValuePair = priceList.Aggregate((l, r) => l.Value < r.Value ? l : r);
+            var minKey = minKeyValuePair.Key.garageName;
+            int minValue = minKeyValuePair.Value;
+
+            Console.WriteLine($"\nЛучшая цена за выбранный сервис: {minValue} у гаража - {minKey}");
+
+        }
+
+    }
 }
