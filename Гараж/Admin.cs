@@ -24,9 +24,8 @@ namespace Гараж
 
         public decimal GetMoneyBalance(int money)
         {
-            decimal moneyBalance = _moneyBalance; 
             decimal commission = 10;
-            _moneyBalance = moneyBalance + money * commission / 100;
+            _moneyBalance += money * commission / 100;
             return _moneyBalance; 
         }
 
